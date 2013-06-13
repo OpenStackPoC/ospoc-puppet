@@ -4,6 +4,8 @@
 mod 'r10k',
   :git => 'https://github.com/tfhartmann/puppet-r10k.git'
 
+mod 'openstack',
+  :git => 'git://github.com/stackforge/puppet-openstack'
 
 # This is currently a noop but will be supported in the future.
 forge 'forge.puppetlabs.com'
