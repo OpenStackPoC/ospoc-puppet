@@ -46,4 +46,6 @@ class common-poc (
       backup  => true,
       content => template( 'common-poc/etc/profile.d/harvard.sh.erb'),
   }
+
+  package { 'mosh': ensure => installed, }
 }
