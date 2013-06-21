@@ -1,0 +1,12 @@
+#### THIS FILE MANAGED BY PUPPET ####
+alias view="/usr/bin/vim -R"
+alias facter="facter -p"
+
+bind '"\e[A"':history-search-backward
+bind '"\e[B"':history-search-forward
+
+export http_proxy=http://<%= @proxyserver -%>:3128
+export https_proxy=http://<%= @proxyserver -%>:3128
+
+#### THIS FILE MANAGED BY PUPPET ####
+
