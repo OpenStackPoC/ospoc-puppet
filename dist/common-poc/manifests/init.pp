@@ -35,13 +35,15 @@
 #
 # Copyright 2013 Your name here, unless otherwise noted.
 #
-class common-poc {
+class common-poc (
+  $proxyserver = hiera('proxyserver', undef )
+  ){
   file { '/etc/profile.d/harvard.sh':
       ensure  => 'present',
       mode    => '0644',
       owner   => 'root',
       group   => 'root',
       backup  => true,
-      content => template( '/common-poc/etc/profile.d/harvard.sh.erb'),
+      content => template( 'common-poc/etc/profile.d/harvard.sh.erb'),
   }
 }
