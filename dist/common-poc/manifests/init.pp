@@ -48,10 +48,11 @@ class common-poc (
       content => template( 'common-poc/etc/profile.d/harvard.sh.erb'),
   }
   if ( $keys ) {
-    ensure_resource('ssh_authorized_key', $keys,{
+    ensure_resource('ssh_authorized_key', $keys, {
       'user'   => 'root',
       'key'    => $keys,
-      'ensure' => 'present'}),
+      'ensure' => 'present'
+    })
   }
 
 
