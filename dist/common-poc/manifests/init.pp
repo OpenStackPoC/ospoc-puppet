@@ -51,6 +51,7 @@ class common-poc (
     ensure_resource('ssh_authorized_key', $keys, {
       'user'   => 'root',
       'key'    => $keys,
+      'type'   => 'ssh-rsa',
       'ensure' => 'present'
     })
   }
