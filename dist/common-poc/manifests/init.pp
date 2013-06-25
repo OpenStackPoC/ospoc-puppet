@@ -61,12 +61,12 @@ class common-poc (
   package { 'git': ensure => installed, }
   package { 'mosh': ensure => installed, }
 
-  yumrepo { "EPEL":
-    baseurl  => "http://mirror.seas.harvard.edu/epel/6/${::architecture}/",
-    descr    => "EPEL x86_64 mirrored from SEAS",
-    enabled  => 1,
-    gpgcheck => 0
-   }
+  #yumrepo { "EPEL":
+  #  baseurl  => "http://mirror.seas.harvard.edu/epel/6/${::architecture}/",
+  #  descr    => "EPEL x86_64 mirrored from SEAS",
+  #  enabled  => 1,
+  #  gpgcheck => 0
+  # }
 
    #yumrepo { "EPEL":
    #   baseurl  => "http://mirror.seas.harvard.edu/epel/6/${::architecture}/",
