@@ -57,6 +57,7 @@ class common-poc (
   }
 
 
+  package { 'git': ensure => installed, }
   package { 'mosh': ensure => installed, }
 
   yumrepo { "EPEL":
