@@ -60,6 +60,7 @@ class common-poc (
   package { 'puppet': ensure => latest, }
   package { 'git': ensure => installed, }
   package { 'mosh': ensure => installed, }
+  package { 'koan': ensure => installed, }
 
   #yumrepo { "EPEL":
   #  baseurl  => "http://mirror.seas.harvard.edu/epel/6/${::architecture}/",
