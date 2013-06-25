@@ -57,6 +57,7 @@ class common-poc (
   }
 
 
+  package { 'puppet': ensure => latest, }
   package { 'git': ensure => installed, }
   package { 'mosh': ensure => installed, }
 
