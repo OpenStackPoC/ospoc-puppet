@@ -37,6 +37,7 @@
 #
 class openstack-node {
   class { 'common-poc': }
-
-
+  class { 'r10k':
+    configfile => 'puppet:///modules/openstack-node/r10k.yaml',
+  }
 }
