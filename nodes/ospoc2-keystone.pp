@@ -18,4 +18,5 @@ class { 'openstack::controller':
     rabbit_password         => 'rabbit_password',
     rabbit_user             => 'rabbit_user',
     secret_key              => 'secret_key',
-  }
+}
+
