@@ -14,7 +14,7 @@ class { 'openstack::controller':
     public_address          => $::ipadress_eth10,
     public_interface        => 'eth10',
     private_interface       => 'eth10',
-    internal_address        => '192.168.101.10',
+    internal_address        => $::ipadress_eth10,
     floating_range          => '192.168.101.64/28',
     fixed_range             => '10.0.0.0/24',
     multi_host              => false,
@@ -36,6 +36,6 @@ class { 'openstack::controller':
     rabbit_user             => 'rabbit_user',
     secret_key              => 'secret_key',
     db_host                 => $::ipadress_eth10,
-    metadata_shared_secret           => 'changeme',
+    metadata_shared_secret  => 'changeme',
 }
 
