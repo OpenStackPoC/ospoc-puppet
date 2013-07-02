@@ -62,6 +62,11 @@ class common-poc (
   package { 'mosh': ensure => installed, }
   package { 'koan': ensure => installed, }
 
+  service { 'iptables':
+    ensure  => 'stopped',
+    enabled => false,
+  }
+
   #yumrepo { "EPEL":
   #  baseurl  => "http://mirror.seas.harvard.edu/epel/6/${::architecture}/",
   #  descr    => "EPEL x86_64 mirrored from SEAS",
