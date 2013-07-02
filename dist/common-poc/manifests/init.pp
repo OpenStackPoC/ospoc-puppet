@@ -63,8 +63,8 @@ class common-poc (
   package { 'koan': ensure => installed, }
 
   service { 'iptables':
-    ensure  => 'stopped',
-    enabled => false,
+    ensure => 'stopped',
+    enable => false,
   }
 
   #yumrepo { "EPEL":
