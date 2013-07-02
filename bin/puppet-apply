@@ -1,0 +1,5 @@
+#!/bin/bash
+
+MANIFEST=$1
+
+puppet apply --modulepath=./modules  --confdir=conf  ${MANIFEST}

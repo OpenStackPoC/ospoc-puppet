@@ -1,0 +1,7 @@
+#!/bin/bash
+
+PKGS="mysql-server"
+
+yum -y remove ${PKGS}
+
+rm -rf /var/lib/mysql /etc/mysql /etc/my.cnf 
