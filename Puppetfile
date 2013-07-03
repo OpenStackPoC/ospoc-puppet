@@ -4,6 +4,9 @@
 mod 'r10k',
   :git => 'https://github.com/tfhartmann/puppet-r10k.git'
 
+mod 'splunk',
+  :git => 'https://github.com/huit/puppet-splunk.git'
+
 # This is currently a noop but will be supported in the future.
 forge 'forge.puppetlabs.com'
 
