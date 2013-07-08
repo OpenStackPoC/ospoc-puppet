@@ -1,5 +1,8 @@
 #!/bin/bash
 
 MANIFEST=$1
+CONFDIR=./conf
+MODULEDIR=./modules
 
-puppet apply --modulepath=./modules  --confdir=conf  ${MANIFEST}
+puppet apply --modulepath=${MODULEDIR} --confdir=${CONFDIR} ${MANIFEST}
+
