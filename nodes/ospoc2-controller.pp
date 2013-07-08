@@ -37,5 +37,6 @@ class { 'openstack::controller':
     secret_key              => 'secret_key',
     db_host                 => $::ipadress_eth10,
     metadata_shared_secret  => 'changeme',
+    ovs_local_ip            => $::ipadress_eth10,
 }
 
