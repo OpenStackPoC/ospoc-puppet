@@ -3,6 +3,8 @@
 MANIFEST=$1
 CONFDIR=./conf
 MODULEDIR=./modules
+HIERA_FILE=${CONFDIR}/hiera.yaml
+#DEBUG="--debug"
 
-puppet apply --modulepath=${MODULEDIR} --confdir=${CONFDIR} ${MANIFEST}
+puppet apply ${DEBUG} --modulepath=${MODULEDIR} --confdir=${CONFDIR} --hiera_config ${HIERA_FILE} ${MANIFEST}
 
