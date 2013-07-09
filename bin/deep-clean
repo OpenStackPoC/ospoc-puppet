@@ -29,7 +29,7 @@ PKGS="mysql-server rabbitmq-server"
 PKGS=" ${PKGS} $(rpm -qa | grep ^openstack )"
 PKGS=" ${PKGS} $(rpm -qa | grep ^quantum )"
 
-DIRS="mysql nova cinder quantum keystone "
+DIRS="mysql nova cinder quantum keystone glance"
 
 for SVC in ${SERVICES}; do
    service ${SVC} stop
@@ -43,4 +43,4 @@ for DIR in ${DIRS}; do
    rm -rf /var/log/${DIR}
 done
 
-rm -f /etc/my.cnf 
+rm -f /etc/my.cnf /root/.my.cnf
