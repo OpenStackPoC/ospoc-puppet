@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SVCS1=$( /sbin/chkconfig --list | grep openstack | grep 3:on | awk '{print $1}' )
+SVCS2=$( /sbin/chkconfig --list | grep quantum | grep 3:on | awk '{print $1}' )
+SVCS="${SVCS1} ${SVCS2}"
+
+for SVC in ${SVCS}; do
+  service ${SVC} restart
+done
+
