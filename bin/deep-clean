@@ -43,4 +43,6 @@ for DIR in ${DIRS}; do
    rm -rf /var/log/${DIR}
 done
 
-rm -f /etc/my.cnf /root/.my.cnf
+rm -f /etc/my.cnf /root/.my.cnf 
+rm -f /root/openrc
+
