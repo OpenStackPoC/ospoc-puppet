@@ -40,4 +40,6 @@ class openstack-node {
   class { 'r10k':
     configfile => 'puppet:///modules/openstack-node/r10k.yaml',
   }
+  class { 'splunk': }
+  splunk::ta::files { 'Splunk_TA_nix': }
 }
