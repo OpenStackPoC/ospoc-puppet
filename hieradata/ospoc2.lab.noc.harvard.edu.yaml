@@ -1,0 +1,3 @@
+openstack::all::public_interface:            'eth0'
+openstack::all::bridge_interface:            'eth10'
+

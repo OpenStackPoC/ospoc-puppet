@@ -1,5 +1,10 @@
 #!/bin/bash
 
 MANIFEST=$1
+CONFDIR=./conf
+MODULEDIR=./modules
+HIERA_FILE=${CONFDIR}/hiera.yaml
+#DEBUG="--debug"
 
-puppet apply --modulepath=./modules  --confdir=conf  ${MANIFEST}
+puppet apply ${DEBUG} --modulepath=${MODULEDIR} --confdir=${CONFDIR} --hiera_config ${HIERA_FILE} ${MANIFEST}
+

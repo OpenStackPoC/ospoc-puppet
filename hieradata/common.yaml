@@ -1,0 +1,191 @@
+---
+
+#
+# Endpoint IP addresses, interfaces, and ports
+#
+# (How the hell do you do this?)
+
+#
+# Users and passwords: see database or keystone sections
+#
+
+#
+# Database related values
+#
+#   https://github.com/stackforge/puppet-openstack/blob/master/manifests/db/mysql.pp
+#
+
+openstack::db::mysql::mysql_bind_address:       '0.0.0.0'
+openstack::db::mysql::mysql_root_password:      'freedomFries'
+openstack::db::mysql::keystone_db_password:     'freedomFries'
+openstack::db::mysql::glance_db_password:       'freedomFries'
+openstack::db::mysql::nova_db_password:         'freedomFries'
+openstack::db::mysql::cinder_db_password:       'freedomFries'
+openstack::db::mysql::quantum_db_password:      'freedomFries'
+openstack::db::mysql::allowed_hosts:            ['10.255.73.%']
+
+#
+# Keystone
+#
+#  https://github.com/stackforge/puppet-openstack/blob/master/manifests/keystone.pp
+#
+openstack::keystone::public_address:           '10.255.73.102'
+openstack::keystone::internal_address:         '127.0.0.1'
+openstack::keystone::region:                   'NOC Lab'
+openstack::keystone::admin_token:              'my_keystone_admin_token'
+openstack::keystone::admin_email:              'keystone-admin@example.com'
+openstack::keystone::admin_password:           'freedomFries'
+openstack::keystone::glance_user_password:     'freedomFries'
+openstack::keystone::nova_user_password:       'freedomFries'
+openstack::keystone::cinder_user_password:     'freedomFries'
+openstack::keystone::quantum_user_password:    'freedomFries'
+openstack::keystone::db_password:              %{openstack::db::mysql::keystone_db_password}
+
+
+#
+# Authfile
+#
+#  https://github.com/stackforge/puppet-openstack/blob/master/manifests/auth_file.pp
+#
+openstack::auth_file::admin_password:          %{openstack::keystone::admin_password}
+openstack::auth_file::controller_node:         %{openstack::keystone::public_address}
+openstack::auth_file::keystone_admin_token:    %{openstack::keystone::admin_token}
+
+
+#
+# Glance Image Service
+#
+#  https://github.com/stackforge/puppet-openstack/blob/master/manifests/glance.pp
+#
+openstack::glance::backend:                    'file'
+
+openstack::glance::user_password:              %{openstack::keystone::glance_user_password}
+openstack::glance::db_password:                %{openstack::db::mysql::glance_db_password}
+openstack::glance::db_host:                    '10.255.73.102'
+
+#
+# Nova Headnode Services
+#
+#  https://github.com/stackforge/puppet-openstack/blob/master/manifests/nova/controller.pp
+#
+openstack::nova::controller::public_address:     '10.255.73.102'
+openstack::nova::controller::db_host:            '10.255.73.102'
+openstack::nova::controller::keystone_host:      %{openstack::keystone::public_address}
+openstack::nova::controller::rabbit_password:    'freedomFries' 
+openstack::nova::controller::nova_user_password: %{openstack::keystone::nova_user_password}
+openstack::nova::controller::nova_db_password:   %{openstack::db::mysql::nova_db_password}
+
+openstack::nova::controller::quantum_user_password: %{openstack::keystone::quantum_user_password}
+
+#
+# Cinder Headnode Services
+#
+#  https://github.com/stackforge/puppet-openstack/blob/master/manifests/cinder/controller.pp
+#
+openstack::cinder::controller::rabbit_password:   %{openstack::nova::controller::rabbit_password}
+openstack::cinder::controller::keystone_password: %{openstack::db::mysql::cinder_user_password}
+openstack::cinder::controller::db_password:       %{openstack::db::mysql::cinder_db_password}
+
+#
+# Quantum Headnode Services
+#
+#  https://github.com/stackforge/puppet-openstack/blob/stable/grizzly/manifests/quantum.pp
+#
+openstack::quantum::user_password:                %{openstack::db::mysql::quantum_user_password}
+openstack::quantum::rabbit_password:              %{openstack::nova::controller::rabbit_password}
+openstack::quantum::db_password:                  %{openstack::db::mysql::quantum_db_password}
+
+#
+# Horizon Dashboard
+#
+#  https://github.com/stackforge/puppet-openstack/blob/master/manifests/horizon.pp
+#
+openstack::horizon::secret_key:                   %{openstack::keystone::admin_token}
+openstack::horizon::keystone_host:                %{openstack::keystone::public_address}
+
+
+
+
+#
+# All-in-one
+#
+openstack::all::db_host:                     '10.255.73.102'
+openstack::all::allowed_hosts:               ['10.255.73.%']
+openstack::all::keystone_host:               '10.255.73.102'
+#openstack::all::glance_host:                '10.255.73.102'
+openstack::all::rabbit_host:                 '10.255.73.102'
+
+
+#
+# Users and passwords: see database or keystone sections
+#
+openstack::all::admin_email:                    'keystone-admin@example.com'
+openstack::all::admin_token:                    'my_keystone_admin_token'
+openstack::all::admin_password:                 'freedomFries'
+openstack::all::rabbit_password:                'freedomFries'
+openstack::all::mysql_root_password:            'freedomFries'
+openstack::all::keystone_db_password:           'freedomFries'
+openstack::all::keystone_admin_token:           'freedomFries'
+openstack::all::glance_db_password:             'freedomFries'
+openstack::all::glance_user_password:           'freedomFries'
+openstack::all::nova_db_password:               'freedomFries'
+openstack::all::nova_user_password:             'freedomFries'
+openstack::all::cinder_db_password:             'freedomFries'
+openstack::all::cinder_user_password:           'freedomFries'
+openstack::all::quantum_db_password:            'freedomFries'
+openstack::all::quantum_user_password:          'freedomFries'
+openstack::all::secret_key:                     'freedomFries'
+openstack::all::public_address:                 %{::ipaddress}
+openstack::all::ovs_local_ip:                   '127.0.0.1'
+openstack::all::metadata_shared_secret:         'freedomFries'
+
+#openstack::controller::public_address:         '172.17.0.3'
+#openstack::controller::public_interface:       'eth10'
+#openstack::controller::private_interface:      'eth2'
+#openstack::controller::mysql_root_password:    'puppetlabs_mysql'
+#openstack::controller::admin_email:            'cody@example.com'
+#openstack::controller::admin_password:         'puppetlabs'
+#openstack::controller::keystone_db_password:   'puppetlabs_keystone_db'
+#openstack::controller::keystone_admin_token:   'puppetlabs_keystone_token'
+#openstack::controller::region:                 'pl-us-west-1'
+#openstack::controller::glance_db_password:     'puppetlabs_glance_db'
+#openstack::controller::glance_user_password:   'puppetlabs_glance_user'
+#openstack::controller::nova_db_password:       'puppetlabs_nova_db'
+#openstack::controller::nova_user_password:     'puppetlabs_nova_user'
+#openstack::controller::cinder_db_password:     'puppetlabs_cinder_db'
+#openstack::controller::cinder_user_password:   'puppetlabs_cinder_user'
+#openstack::controller::secret_key:             'puppetlabs_horizon_secret'
+#openstack::controller::fixed_range:            '10.0.0.0/24'
+#openstack::controller::floating_range:         '172.17.0.128/25'
+#openstack::controller::multi_host:             true
+#openstack::controller::db_host:                '127.0.0.1'
+#openstack::controller::db_type:                'mysql'
+#openstack::controller::glance_api_servers:     '127.0.0.1:9292'
+#openstack::controller::rabbit_password:        'puppetlabs_rabbit_pw'
+#openstack::controller::cache_server_ip:        '127.0.0.1'
+#openstack::controller::cache_server_port:      '11211'
+#openstack::controller::verbose:                'True'
+#openstack::controller::ovs_local_ip:           '10.0.0.1'
+
+#openstack::compute::public_interface:          'eth0'
+#openstack::compute::private_interface:         'eth2'
+#openstack::compute::internal_address:          "%{ipaddress_eth1}"
+#openstack::compute::libvirt_type:              'qemu'
+#openstack::compute::sql_connection:            'mysql://nova:puppetlabs_nova_db@172.17.0.3/nova'
+#openstack::compute::cinder_sql_connection:     'msyql://cinder::puppetlabs_cinder_db@172.17.0.3/cinder'
+#openstack::compute::multi_host:                true
+#openstack::compute::fixed_range:               '10.0.0.0/24'
+#openstack::compute::nova_user_password:        'puppetlabs_nova_user'
+#openstack::compute::rabbit_password:           'puppetlabs_rabbit_pw'
+#openstack::compute::rabbit_host:               '172.17.0.3'
+#openstack::compute::keystone_host:             '172.17.0.3'
+#openstack::compute::glance_api_servers:        ['172.17.0.3:9292']
+#openstack::compute::vncproxy_host:             '172.17.0.3'
+#openstack::compute::vnc_enbaled:               true
+#openstack::compute::verbose:                   true
+
+#nova::conductor::enabled:                      true
+
+#openstack::test_file::quantum:                 false
+#openstack::test_file::sleep_time:              '120'
+#openstack::test_file::floating_ip:             true
