@@ -11,7 +11,7 @@ mod 'splunk',
 forge 'forge.puppetlabs.com'
 
 # Install modules from the Forge
-mod 'cprice404/inifile', '0.10.4'
+mod 'puppetlabs/inifile', '1.0.0'
 mod 'ploperations/interval', '0.0.1'
 mod 'puppetlabs/apt', '1.1.0'
 mod 'puppetlabs/firewall', '0.3.0'
@@ -23,7 +23,7 @@ mod 'saz/memcached', '2.1.0'
 mod 'puppetlabs/puppetdb', '1.2.1'
 mod 'puppetlabs/stdlib', '3.2.0'
 mod 'puppetlabs/vcsrepo', '0.1.1'
-mod 'ripienaar/concat', '0.2.0'
+mod 'puppetlabs/concat', '1.0.0'
 mod 'thias/glusterfs', '0.0.2'
 mod 'puppetlabs/apache', '0.8.1'
 mod 'puppetlabs/vswitch', '0.1.1'
