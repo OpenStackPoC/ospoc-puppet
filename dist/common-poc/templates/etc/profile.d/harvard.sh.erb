@@ -7,7 +7,7 @@ bind '"\e[B"':history-search-forward
 
 export http_proxy=http://<%= @proxyserver -%>:3128
 export https_proxy=http://<%= @proxyserver -%>:3128
-export no_proxy="localhost,127.0.0.1,${::ipaddress},.localdomain.com,.${::domain}"
+export no_proxy="localhost,127.0.0.1,<%= @ipaddress -%>,.localdomain.com,.<%= @domain -%>"
 
 #### THIS FILE MANAGED BY PUPPET ####
 
