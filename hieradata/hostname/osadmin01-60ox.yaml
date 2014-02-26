@@ -1,0 +1,25 @@
+---
+apache::purge_configs: false
+openstack_network::host_number: '01'
+openstack_network::admin_net:
+    bond:
+        0:
+        - 'eth0'
+        - 'eth1'
+    mtu: '1500'
+    ipaddress: '10.255.77.254'
+    netmask: '255.255.255.128'
+    gateway: '10.255.77.129'
+    vlan: false
+openstack_network::mgmt_net:
+    bond:
+        0:
+        - 'eth0'
+        - 'eth1'
+    mtu: '1500'
+    ipaddress: '10.255.71.254'
+    netmask: '255.255.255.128'
+    network: '10.255.71.128'
+    vlan: '3291'
+openstack_repos::local_mirrors: false
+openstack_repos::role: 'foreman'
