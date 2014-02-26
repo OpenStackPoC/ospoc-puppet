@@ -52,3 +52,17 @@ mod 'ceilometer',
 #mod 'openstack-heat',
 #  :git => 'https://github.com/stackforge/puppet-heat.git'
 
+# Install dependencies for shuff's code
+mod 'openstack_network',
+  :git => 'https://github.com/huit/puppet-openstack_network.git'
+
+mod 'openstack_mirrors',
+  :git => 'https://github.com/huit/puppet-openstack_mirrors.git'
+
+mod 'openstack_repos',
+  :git => 'https://github.com/huit/puppet-openstack_repos.git'
+
+mod 'stahnma/epel', '0.0.6'
+mod 'puppetlabs/mrepo', '1.1.1'
+mod 'razorsedge/network', '3.2.0'
+mod 'domcleal/augeasproviders', '1.0.2'
