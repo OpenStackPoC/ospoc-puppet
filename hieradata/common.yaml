@@ -194,6 +194,7 @@ mrepo::params::src_root: '/opt/mrepo'
 mrepo::params::www_root: '/opt/www/mrepo'
 mrepo::params::http_proxy: 'http://proxy.noc.harvard.edu:3128'
 mrepo::params::https_proxy: 'http://proxy.noc.harvard.edu:3128'
+mrepo::params::port: '8080'
 openstack_network::host_domain: 'huit.harvard.edu'
 openstack_network::host_location: '60ox'
 openstack_mirrors::epel: false
