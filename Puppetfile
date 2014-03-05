@@ -53,6 +53,10 @@ mod 'ceilometer',
 #  :git => 'https://github.com/stackforge/puppet-heat.git'
 
 # Install dependencies for shuff's code
+mod 'mrepo',
+  :git => 'https://github.com/huit/puppetlabs-mrepo.git',
+  :ref => 'nephoeng'
+
 mod 'openstack_network',
   :git => 'https://github.com/huit/puppet-openstack_network.git'
 
@@ -63,6 +67,6 @@ mod 'openstack_repos',
   :git => 'https://github.com/huit/puppet-openstack_repos.git'
 
 mod 'stahnma/epel', '0.0.6'
-mod 'puppetlabs/mrepo', '1.1.1'
+# mod 'puppetlabs/mrepo', '1.1.1'
 mod 'razorsedge/network', '3.2.0'
 mod 'domcleal/augeasproviders', '1.0.2'
