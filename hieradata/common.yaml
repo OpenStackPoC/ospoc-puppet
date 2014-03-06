@@ -71,7 +71,7 @@ openstack::glance::db_host:                    '10.255.73.102'
 openstack::nova::controller::public_address:     '10.255.73.102'
 openstack::nova::controller::db_host:            '10.255.73.102'
 openstack::nova::controller::keystone_host:      %{openstack::keystone::public_address}
-openstack::nova::controller::rabbit_password:    'freedomFries' 
+openstack::nova::controller::rabbit_password:    'freedomFries'
 openstack::nova::controller::nova_user_password: %{openstack::keystone::nova_user_password}
 openstack::nova::controller::nova_db_password:   %{openstack::db::mysql::nova_db_password}
 
@@ -190,6 +190,7 @@ openstack::all::metadata_shared_secret:         'freedomFries'
 #openstack::test_file::sleep_time:              '120'
 #openstack::test_file::floating_ip:             true
 
+mrepo::params::rhn: true
 mrepo::params::src_root: '/opt/mrepo'
 mrepo::params::www_root: '/opt/www/mrepo'
 mrepo::params::http_proxy: 'http://proxy.noc.harvard.edu:3128'
@@ -197,6 +198,7 @@ mrepo::params::https_proxy: 'http://proxy.noc.harvard.edu:3128'
 mrepo::params::port: '8080'
 openstack_network::host_domain: 'huit.harvard.edu'
 openstack_network::host_location: '60ox'
+openstack_mirrors::el_source: 'redhat'
 openstack_mirrors::epel: false
 openstack_mirrors::el_versions:
 - '6-x86_64'
